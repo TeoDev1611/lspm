@@ -6,7 +6,9 @@ import (
 )
 
 var (
-	pathData bool
+	serversData bool
+	cacheData   bool
+	configData  bool
 )
 
 func main() {
@@ -14,7 +16,9 @@ func main() {
 	// Write a subcommand if is necesary
 	dirSubCmd := flaggy.NewSubcommand("dir")
 	dirSubCmd.Description = `Here show all dir utils like config path cache path servers path etc`
-	dirSubCmd.Bool(&pathData, "p", "path", "Prints the Url to the path")
+	dirSubCmd.Bool(&serversData, "s", "servers", "Prints the servers folder")
+	dirSubCmd.Bool(&cacheData, "C", "cache", "Prints the cache folder")
+	dirSubCmd.Bool(&configData, "c", "config", "Prints the config file")
 
 	// Set the Options for the parser 
 	flaggy.DefaultParser.Name = "lspm"
@@ -36,6 +40,8 @@ Made with love in Ecuador By Teo
 	flaggy.Parse()
 
 	// Run the cmds
-	dirs.PrintConfigDir(pathData)
+	dirs.PrintServersPath(serversData)
+	dirs.PrintConfigFile(configData)
+	dirs.PrintCachePath(cacheData)
 
 }

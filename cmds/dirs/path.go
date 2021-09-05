@@ -6,9 +6,23 @@ import (
 	"github.com/TeoDev1611/lspm/core/dirs"
 )
 
-func PrintConfigDir(opt bool) {
+func PrintServersPath(opt bool) {
 	if opt {
-		path := dirs.GetDataPath("")
+		path := dirs.GetServersPath("")
+		log.Printf("PATH: %s", path)
+	}
+}
+
+func PrintCachePath(opt bool) {
+	if opt {
+		path := dirs.GetCachePath("")
+		log.Printf("PATH: %s", path)
+	}
+}
+
+func PrintConfigFile(opt bool) {
+	if opt {
+		path := dirs.GetConfigPath()
 		log.Printf("PATH: %s", path)
 	}
 }

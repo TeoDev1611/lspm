@@ -1,10 +1,20 @@
 package main
 
 import (
+	"github.com/TeoDev1611/lspm/cmds/dirs"
 	"github.com/integrii/flaggy"
 )
 
+var (
+	pathData bool
+)
+
 func main() {
+
+	// Write a subcommand if is necesary
+	dirSubCmd := flaggy.NewSubcommand("dir")
+	dirSubCmd.Description = `Here show all dir utils like config path cache path servers path etc`
+	dirSubCmd.Bool(&pathData, "p", "path", "Prints the Url to the path")
 
 	// Set the Options for the parser 
 	flaggy.DefaultParser.Name = "lspm"
@@ -20,6 +30,11 @@ func main() {
 *Credits:*
 Made with love in Ecuador By Teo
 `
+	flaggy.AttachSubcommand(dirSubCmd, 1)
 	//Parse the cli
 	flaggy.Parse()
+
+	// Run the cmds
+	dirs.PrintConfigDir(pathData)
+
 }

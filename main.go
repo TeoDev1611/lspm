@@ -19,6 +19,7 @@ func main() {
 	// Set the Options for the parser 
 	flaggy.DefaultParser.Name = "lspm"
 	flaggy.DefaultParser.Version = "0.0.1"
+	flaggy.DefaultParser.AdditionalHelpPrepend = "https://github.com/TeoDev1611/lspm"
 	flaggy.DefaultParser.ShortName = "lsm"
 	flaggy.DefaultParser.ShowHelpOnUnexpected = true
 	flaggy.DefaultParser.Description = `Language Server Protocol Manager
